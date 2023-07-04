@@ -22,6 +22,22 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+-- nest js 설치
+npm i -g @nestjs/cli
+nest new nestjs-study
+
+-- controller, service 생성
+nest generate controller books
+nest generate service books
+
+-- 서버 run 체크
+npm run start
+
+
+-- mysql 설치
+npm install --save @nestjs/typeorm typeorm mysql
+
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
@@ -30,6 +46,20 @@
 
 ```bash
 $ npm install
+
+### 초기 셋팅
+# nest 프로젝트 설치
+$ npm i -g @nestjs/cli
+$ nest new nestjs-study
+
+# controller, service 생성
+$ nest generate controller books
+$ nest generate service books
+
+# type orm mysql 설치
+$ npm install --save @nestjs/typeorm typeorm mysql
+
+
 ```
 
 ## Running the app
