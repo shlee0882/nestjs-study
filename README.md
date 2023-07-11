@@ -37,6 +37,10 @@ npm run start
 -- mysql 설치
 npm install --save @nestjs/typeorm typeorm mysql
 
+-- mysql 설정파일 
+npm install dotenv
+
+
 
 ## Description
 
@@ -58,6 +62,9 @@ $ nest generate service books
 
 # type orm mysql 설치
 $ npm install --save @nestjs/typeorm typeorm mysql
+
+# config env파일 불러오기 위한 설치
+$ npm install @nestjs/config
 
 
 ```

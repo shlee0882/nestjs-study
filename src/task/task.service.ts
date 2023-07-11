@@ -10,11 +10,11 @@ export class TaskService {
     private taskRepository: Repository<Task>,
   ) {}
 
-  async findAll(): Promise<Task[]> {
+  findAll(): Promise<Task[]> {
     return this.taskRepository.find();
   }
 
-  async create(task: Task): Promise<Task> {
+  create(task: Task): Promise<Task> {
     return this.taskRepository.save(task);
   }
 }
