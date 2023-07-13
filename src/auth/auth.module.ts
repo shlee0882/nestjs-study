@@ -1,20 +1,17 @@
 import { Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
-import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
-import { GoogleStrategy } from '../strategies/google.strategy';
-import { UsersModule } from 'src/user/users.module';
-
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from 'src/user/user.entity';
+import { GoogleStrategy } from 'src/strategies/google.strategy';
+import { AuthController } from './auth.contoller';
 @Module({
+  // eslint-disable-next-line prettier/prettier
   imports: [
-    UsersModule,
-    PassportModule,
-    JwtModule.register({
-      secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: '60m' },
-    }),
+    PassportModule.register({ defaultStrategy: 'google' }),
+    TypeOrmModule.forFeature([User]),
   ],
   providers: [AuthService, GoogleStrategy],
-  exports: [AuthService],
+  controllers: [AuthController],
 })
 export class AuthModule {}

@@ -1,4 +1,4 @@
-import { Todo } from 'src/todo/todo.entity';
+// user.entity.ts
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
@@ -7,16 +7,19 @@ export class User {
   id: number;
 
   @Column({ unique: true })
-  googleId: string;
+  email: string;
 
   @Column()
-  googleToken: string;
+  firstName: string;
 
   @Column()
-  name: string;
+  lastName: string;
 
-  @OneToMany(() => Todo, (todo) => todo.user)
-  todos: Todo[];
+  @Column({ nullable: true })
+  picture: string;
+
+  // @OneToMany(() => Todo, (todo) => todo.user)
+  // todos: Todo[];
 
   @CreateDateColumn()
   createdAt: Date;

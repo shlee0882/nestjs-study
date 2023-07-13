@@ -1,13 +1,17 @@
 // google.strategy.ts
-import { PassportStrategy } from '@nestjs/passport';
-import { Strategy, VerifyCallback } from 'passport-google-oauth20';
 import { Injectable } from '@nestjs/common';
-import { config } from 'dotenv';
-config();
+import { PassportStrategy } from '@nestjs/passport';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Strategy } from 'passport-google-oauth20';
+import { User } from 'src/user/user.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
-  constructor() {
+  constructor(
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
+  ) {
     super({
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -16,16 +20,24 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     });
   }
 
-  async validate(accessToken: string, refreshToken: string, profile: any, done: VerifyCallback): Promise<any> {
-    const { name, emails, id } = profile;
-    const user = {
-      googleId: id,
-      email: emails[0].value,
-      firstName: name.givenName,
-      lastName: name.familyName,
-      accessToken,
-    };
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  async validate(accessToken: string, refreshToken: string, profile: any, done: Function): Promise<any> {
+    const { name, emails, photos } = profile;
 
-    done(null, user);
+    const user = await this.userRepository.findOne({ where: { email: emails[0].value } });
+
+    if (user) {
+      return done(null, user);
+    }
+
+    const newUser = new User();
+    newUser.email = emails[0].value;
+    newUser.firstName = name.givenName;
+    newUser.lastName = name.familyName;
+    newUser.picture = photos[0].value;
+
+    const result = await this.userRepository.save(newUser);
+
+    return done(null, result);
   }
 }
