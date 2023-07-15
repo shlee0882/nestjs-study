@@ -69,12 +69,18 @@ $ npm install @nestjs/config
 # google login 위한 passport-google-oauth20 설치
 $ npm install --save @nestjs/passport passport passport-google-oauth20
 $ npm install --save-dev @types/passport-google-oauth20
-
 $ npm install @nestjs/jwt
 $ npm install @nestjs/passport
 
+# swagger 설치
+$ npm install --save @nestjs/swagger swagger-ui-express
+
 
 ```
+## Swagger UI Test
+
+http://localhost:3000/api-docs#/
+
 
 ## Running the app
 
