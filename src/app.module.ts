@@ -23,6 +23,9 @@ import { UsersModule } from './user/users.module';
       // entities: [Task],
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
+      extra: process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'dev' 
+      ? { socketPath: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}` } 
+      : undefined,
     }),
     TaskModule,
     UsersModule,

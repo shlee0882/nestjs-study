@@ -22,31 +22,7 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
--- nest js 설치
-npm i -g @nestjs/cli
-nest new nestjs-study
-
--- controller, service 생성
-nest generate controller books
-nest generate service books
-
--- 서버 run 체크
-npm run start
-
-
--- mysql 설치
-npm install --save @nestjs/typeorm typeorm mysql
-
--- mysql 설정파일 
-npm install dotenv
-
-
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
+## 설치방법
 
 ```bash
 $ npm install
@@ -63,6 +39,9 @@ $ nest generate service books
 # type orm mysql 설치
 $ npm install --save @nestjs/typeorm typeorm mysql
 
+# 환경변수 설정파일 
+$ npm install dotenv
+
 # config env파일 불러오기 위한 설치
 $ npm install @nestjs/config
 
@@ -77,12 +56,17 @@ $ npm install --save @nestjs/swagger swagger-ui-express
 
 
 ```
-## Swagger UI Test
+## Swagger 테스트
 
-http://localhost:3000/api-docs#/
+nestjs db는 google cloud mysql 사용
+google cloud app engine에 nestjs 플젝 서버 올리기 성공
 
+- 개발: https://nest-project-391903.du.r.appspot.com/api-docs#/
+- 로컬 : http://localhost:3000/api-docs#/
 
-## Running the app
+<br>
+
+## 실행 방법
 
 ```bash
 # development
@@ -94,30 +78,3 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
