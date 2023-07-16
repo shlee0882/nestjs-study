@@ -78,3 +78,7 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
+## 블로그 포스팅
+- [NestJs 토이 프로젝트 구성해보기 - 1](https://shlee0882.tistory.com/296)
+- [NestJs 토이 프로젝트 구성해보기 - 2](https://shlee0882.tistory.com/297)
